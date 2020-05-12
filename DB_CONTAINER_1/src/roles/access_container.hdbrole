@@ -1,6 +1,6 @@
 {
 	"role": {
-		"name": "access#",
+		"name": "access_container#",
 		"schema_privileges": [{
 			"privileges_with_grant_option": ["SELECT"]
 		}]

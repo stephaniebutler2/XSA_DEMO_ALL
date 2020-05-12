@@ -22,6 +22,26 @@ modules:
                           
 
 
+
+ - name: DB_CONTAINER_2
+   type: hdb
+   path: DB_CONTAINER_2
+   requires:
+    - name: hdi_DB_CONTAINER_2
+      properties:
+        TARGET_CONTAINER: ~{hdi-container-name_2}
+
+
+
+    - name: cross-container-service-2
+      group: SERVICE_REPLACEMENTS
+
+      properties:
+        key: ServiceName_1
+        service: ~{the-service-name}
+                          
+
+
 resources:
  - name: hdi_DB_CONTAINER_1
    parameters:
@@ -34,6 +54,23 @@ resources:
  - name: cross-container-service-1
    parameters:
       service-name: SFLIGHT
+   properties:
+      the-service-name: ${service-name}
+   type: org.cloudfoundry.existing-service
+
+
+ - name: hdi_DB_CONTAINER_2
+   parameters:
+      config:
+         schema: XSA_DEMO_C2
+   properties:
+      hdi-container-name_2: ${service-name}
+   type: com.sap.xs.hdi-container
+
+
+ - name: cross-container-service-2
+   parameters:
+      service-name: STEPHANIE-79t4r5qnzd6b44sd-XSA_DEMO_ALL-hdi_DB_CONTAINER_1
    properties:
       the-service-name: ${service-name}
    type: org.cloudfoundry.existing-service

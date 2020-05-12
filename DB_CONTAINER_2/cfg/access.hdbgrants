@@ -1,0 +1,10 @@
+{
+	"STEPHANIE-79t4r5qnzd6b44sd-XSA_DEMO_ALL-hdi_DB_CONTAINER_1": {
+		"object_owner": {
+			"container_roles": ["access_container#"]
+		},
+		"application_user": {
+			"container_roles": ["access_external"]
+		}
+	}
+}

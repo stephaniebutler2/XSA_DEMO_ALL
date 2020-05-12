@@ -1,0 +1,40 @@
+ID: XSA_DEMO_ALL
+_schema-version: '2.1'
+version: 0.0.1
+
+modules:
+ - name: DB_CONTAINER_1
+   type: hdb
+   path: DB_CONTAINER_1
+   requires:
+    - name: hdi_DB_CONTAINER_1
+      properties:
+        TARGET_CONTAINER: ~{hdi-container-name}
+
+
+
+    - name: cross-container-service-1
+      group: SERVICE_REPLACEMENTS
+
+      properties:
+        key: ServiceName_1
+        service: ~{the-service-name}
+                          
+
+
+resources:
+ - name: hdi_DB_CONTAINER_1
+   parameters:
+      config:
+         schema: XSA_DEMO_C1
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container
+
+ - name: cross-container-service-1
+   parameters:
+      service-name: SFLIGHT
+   properties:
+      the-service-name: ${service-name}
+   type: org.cloudfoundry.existing-service
+

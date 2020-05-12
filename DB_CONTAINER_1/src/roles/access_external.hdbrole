@@ -1,0 +1,8 @@
+{
+	"role": {
+		"name": "access_external",
+		"schema_privileges": [{
+			"privileges": ["SELECT"]
+		}]
+	}
+}
